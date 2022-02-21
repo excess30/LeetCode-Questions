@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-     int getFrequency(string &s){
+  int getFrequency(string &s){
         
         int cache[26];
         memset(cache,0,sizeof(cache));
@@ -16,7 +15,8 @@ public:
         
     }
     vector<int> numSmallerByFrequency(vector<string>& queries, vector<string>& words) {
-          unordered_map<string, int> smallestFreq;
+        
+        unordered_map<string, int> smallestFreq;
         vector<int> result;
         for(string &word : words){
             smallestFreq[word] = getFrequency(word);
@@ -32,5 +32,9 @@ public:
             result.push_back(count);
         }
         return result;
+        
     }
 };
+
+
+ 
