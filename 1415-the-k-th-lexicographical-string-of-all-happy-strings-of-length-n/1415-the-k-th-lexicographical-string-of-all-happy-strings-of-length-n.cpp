@@ -1,34 +1,34 @@
 class Solution {
 public:
     
-    void rec(int n, int k,vector<char>&c, string curr,vector<string>& ans)
+    void findString(vector<string>& res,vector<char>& chars, string temp, int n, int k)
     {
-        if(ans.size()==k)
+        if(res.size()==k)
         {
             return;
         }
-        if(curr.size()==n)
+        if(temp.size()==n)
         {
-            ans.push_back(curr);
+            res.push_back(temp);
             return;
         }
-        for(int i=0;i<c.size();i++)
+        for(int i=0;i<chars.size();i++)
         {
-            if(curr.back()!=c[i]||curr.size()==0)
+            if(temp.back()!=chars[i]||temp.size()==0)
             {
-                rec(n,k,c,curr+c[i],ans);
+                findString(res,chars,temp+chars[i],n,k);
             }
         }
     }
     
-    string getHappyString(int n, int k) 
+    string getHappyString(int n, int k)
     {
-        vector<char>c = {'a','b','c'};
-        vector<string>ans;
-        rec(n,k,c,"",ans);
-        if(ans.size()>=k)
+        vector<string>res;
+        vector<char>chars={'a','b','c'};
+        findString(res,chars,"",n,k);
+        if(res.size()>=k)
         {
-            return ans[k-1];
+            return res[k-1];
         }
         return "";
     }
