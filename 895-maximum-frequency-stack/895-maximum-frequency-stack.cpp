@@ -1,6 +1,5 @@
 //Source: Ayushi Sharma
-//Create a max heap to store elemen
-
+//Create a max heap to store elements with respect to frequency. STructure will be. {freq[val],{pos,val}} where pos will be the tie breaker if 2 elements have same frequency.
 
 class FreqStack {
 public:
@@ -15,7 +14,9 @@ public:
     
     void push(int val) 
     {
-        pq.push({freq[val]++,{pos++,val}});    
+        pq.push({freq[val],{pos,val}});    
+        freq[val]++;
+        pos++;
     }
     
     int pop() 
