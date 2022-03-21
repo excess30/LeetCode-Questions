@@ -2,9 +2,7 @@ class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>>& intervals) 
     {
-        
-        // sorting the intervals(vector)
-        sort(intervals.begin(),intervals.end());        
+         sort(intervals.begin(),intervals.end());        
            
         int x1 = intervals[0][0];
         int x2 = intervals[0][1];
@@ -28,5 +26,6 @@ public:
         }
         
         return res;       // return cnt
+        
     }
 };
