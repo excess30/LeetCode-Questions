@@ -21,18 +21,33 @@ public:
 
 class Solution {
 public:
-    Node* cloneGraph(Node* node) {
-        if (!node) {
+    
+    unordered_map<Node*, Node*>mp;
+    
+    Node* dfs(Node* node)
+    {
+        if(mp.find(node)!=mp.end())
+        {
+            return mp[node];
+        }
+        Node* copy = new Node(node->val,{});
+        mp[node]=copy;
+        for(auto &x:node->neighbors)
+        {
+            copy->neighbors.push_back(dfs(x));
+        }
+        return copy;
+    }
+    
+    Node* cloneGraph(Node* node) 
+    {
+        if(node==NULL)
+        {
             return NULL;
         }
-        if (copies.find(node) == copies.end()) {
-            copies[node] = new Node(node -> val, {});
-            for (Node* neighbor : node -> neighbors) {
-                copies[node] -> neighbors.push_back(cloneGraph(neighbor));
-            }
-        }
-        return copies[node];
+        dfs(node);
+        return mp[node];
     }
-private:
-    unordered_map<Node*, Node*> copies;
+    
+
 };
