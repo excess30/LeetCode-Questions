@@ -2,16 +2,18 @@ class Solution {
 public:
     char findTheDifference(string s, string t) 
     {
-        int n = s.size();
-        sort(s.begin(),s.end());
-        sort(t.begin(),t.end());
-        for(int i=0;i<s.size();i++)
+        unordered_map<char,int>mp;
+        for(auto x:s)
         {
-            if(s[i]!=t[i])
+            mp[x]++;
+        }
+        for(auto y:t)
+        {
+            if(mp[y]--<=0)
             {
-                return t[i];
+                return y;
             }
         }
-        return t[n];
+        return '/0';
     }
 };
