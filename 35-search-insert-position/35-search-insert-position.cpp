@@ -2,23 +2,24 @@ class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) 
     {
-        int s=0,e=nums.size()-1;
-        while(s<=e)
+        int n = nums.size();
+        int l=0,h=n-1;    
+        while(l<=h)
         {
-            int mid = s+(e-s)/2;
+            int mid = l+(h-l)/2;
             if(nums[mid]==target)
             {
                 return mid;
             }
-            else if(nums[mid]<target)
+            if(target<nums[mid])
             {
-                s=mid+1;
+                h=mid-1;
             }
             else
             {
-                e=mid-1;
+                l=mid+1;
             }
         }
-        return s;
+        return l;
     }
 };
