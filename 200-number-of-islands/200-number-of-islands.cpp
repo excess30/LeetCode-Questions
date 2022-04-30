@@ -3,11 +3,11 @@ public:
     
     void findIslands(vector<vector<char>>& grid, int i, int j)
     {
-        if(i<0||i>=grid.size()||j<0||j>=grid[0].size()||grid[i][j]=='#'||grid[i][j]=='0')
+        if(i<0||i>=grid.size()||j<0||j>=grid[0].size()||grid[i][j]=='0')
         {
             return;
         }
-        grid[i][j]='#';
+        grid[i][j]='0';
         findIslands(grid,i+1,j);
         findIslands(grid,i-1,j);
         findIslands(grid,i,j+1);
