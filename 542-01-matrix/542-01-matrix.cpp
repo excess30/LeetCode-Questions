@@ -1,8 +1,6 @@
 class Solution {
 public:
-    
-    
-    bool isvalid(int i,int j,int m,int n)
+       bool isvalid(int i,int j,int m,int n)
     {
         if(i==m||j==n||j<0||i<0)
             return false;
@@ -27,16 +25,20 @@ public:
             }
         while(!q.empty())
         {
-            pair<int,int> curr=q.front();
-            q.pop();
-            for(auto& x:dir)
+            int sz= q.size();
+            while(sz--)
             {
-                int a=curr.first+x[0];
-                int b=curr.second+x[1];
-                if(isvalid(a,b,m,n)&&dis[a][b]==-1)
+                pair<int,int> curr=q.front();
+                q.pop();
+                for(auto& x:dir)
                 {
-                    q.push({a,b});
-                    dis[a][b]=dis[curr.first][curr.second]+1;
+                    int a=curr.first+x[0];
+                    int b=curr.second+x[1];
+                    if(isvalid(a,b,m,n)&&dis[a][b]==-1)
+                    {
+                        q.push({a,b});
+                        dis[a][b]=dis[curr.first][curr.second]+1;
+                    }
                 }
             }
         }
