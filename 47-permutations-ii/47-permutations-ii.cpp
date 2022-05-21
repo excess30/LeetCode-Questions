@@ -1,30 +1,30 @@
 class Solution {
 public:
     
-    void permute(vector<int>& nums, set<vector<int>>& s, int idx)
+    void generatePermutations(set<vector<int>>& s,int idx,vector<int>& nums)
     {
         if(idx==nums.size())
         {
             s.insert(nums);
             return;
         }
-        for(int i= idx;i<nums.size();i++)
+        for(int i=idx;i<nums.size();i++)
         {
             swap(nums[idx],nums[i]);
-            permute(nums,s,idx+1);
+            generatePermutations(s,idx+1,nums);
             swap(nums[idx],nums[i]);
         }
     }
-    
-    vector<vector<int>> permuteUnique(vector<int>& nums)
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) 
     {
         set<vector<int>>s;
-        permute(nums,s,0);
-        vector<vector<int>>res;
+        generatePermutations(s,0,nums);
+        vector<vector<int>>ans;
         for(auto x:s)
         {
-            res.push_back(x);
+            ans.push_back(x);
         }
-        return res;
+        return ans;
     }
 };
